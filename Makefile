@@ -2,7 +2,7 @@
 
 
 PROG	= hyde
-SOURCES	= main.c
+SOURCES	= main.c jekyll.c hyde.c
 ########################################################################
 LDFLAGS	=
 CC		=gcc
