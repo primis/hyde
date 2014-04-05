@@ -17,4 +17,4 @@ $(PROG): $(OBJECTS)
 .c.o:
 	gcc $(CFLAGS) -c $< -o $@
 clean:
-	rm -f *~ $(OBJS) $(PROG)
+	rm -f *~ $(OBJECTS) $(PROG)

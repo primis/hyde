@@ -46,18 +46,13 @@ typedef struct elementStruct {
 	location L;
 	char *meta;
 	callback_t callback;
-	elementList *elements;
+	struct elementListStruct *elements;
 } element;
 
 typedef struct elementListStruct {
 	struct elementStruct		E;
 	struct elementListStruct	*next;
 } elementList;
-
-typedef struct panelListStruct{
-	struct panelStruct 		P;
-	struct panelListStruct *next;
-} panelList;
 
 typedef struct panelStruct {
 	int GUID;
@@ -66,6 +61,10 @@ typedef struct panelStruct {
 	elementList elements;
 	struct panelListStruct *panels;
 } panel;
+typedef struct panelListStruct{
+	struct  panelStruct		P;
+	struct panelListStruct *next;
+} panelList;
 
 
 #endif
