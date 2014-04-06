@@ -260,9 +260,7 @@ void HydeListener() {
 			windowSize = 1;
 		break;
 	case ButtonPress:
-		Current->elements->E->type=TEXT;
-		redraw();
-		break;
+		system("zenity --info --text=\"Hello, World!\"");
 	case KeyPress:
 		XUnloadFont(display, fontInfo->fid);
 		XFreeGC(display, gc);
