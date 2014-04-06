@@ -31,40 +31,56 @@ enum PanelTypes {
 
 typedef void (*callback_t)(void);
 
-typedef struct locationStruct {
-	int X;
-	int Y;
-	int Xsize;
-	int Ysize;
+typedef struct {
+	int x;
+	int y;
+	int width;
+	int height;
 } location;
+
+typedef struct elementNodeStruct {
+	struct elementStruct *E;
+	struct elementNodeStruct *next;
+} elementNode;
 
 typedef struct elementStruct {
 	int GUID;
 	int type;
 	int value;
 	char *string;
-	location L;
-	char *meta;
+	location *L;
 	callback_t callback;
-	struct elementListStruct *elements;
+	char* meta;
+	elementNode *elements;
 } element;
 
-typedef struct elementListStruct {
-	struct elementStruct		E;
-	struct elementListStruct	*next;
-} elementList;
+typedef struct panelNodeStruct {
+	struct panelStruct *P;
+	struct panelNodeStruct *next;
+} panelNode;
 
 typedef struct panelStruct {
 	int GUID;
+	int visible;
 	int type;
 	char *string;
-	elementList elements;
-	struct panelListStruct *panels;
+	location *L;
+	elementNode *elements;
+	panelNode *panels;
 } panel;
-typedef struct panelListStruct{
-	struct  panelStruct		P;
-	struct panelListStruct *next;
-} panelList;
 
+
+
+///////////////////////// Constructors /////////////////////////////////
+
+location *Location(int x, int y, int width, int height);
+
+panel *Panel(int type, location *L);
+panelNode *PanelNode(panel *P, panelNode *next);
+
+element *Element(int type, location *L);
+elementNode *ElementNode(element *E, elementNode* next);
+
+panel *Window(char* name, location *L);
 
 #endif
