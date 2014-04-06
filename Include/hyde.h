@@ -36,51 +36,52 @@ typedef struct {
 	int y;
 	int width;
 	int height;
-} location;
+} hLocation;
 
-typedef struct elementNodeStruct {
-	struct elementStruct *E;
-	struct elementNodeStruct *next;
-} elementNode;
+typedef struct hElementNodeStruct {
+	struct hElementStruct *E;
+	struct hElementNodeStruct *next;
+} hElementNode;
 
-typedef struct elementStruct {
+typedef struct hElementStruct {
 	int GUID;
 	int type;
 	int value;
 	char *string;
-	location *L;
+	hLocation *L;
 	callback_t callback;
 	char* meta;
-	elementNode *elements;
-} element;
+	hElementNode *elements;
+} hElement;
 
-typedef struct panelNodeStruct {
-	struct panelStruct *P;
-	struct panelNodeStruct *next;
-} panelNode;
+typedef struct hPanelNodeStruct {
+	struct hPanelStruct *P;
+	struct hPanelNodeStruct *next;
+} hPanelNode;
 
-typedef struct panelStruct {
+typedef struct hPanelStruct {
 	int GUID;
 	int visible;
 	int type;
 	char *string;
-	location *L;
-	elementNode *elements;
-	panelNode *panels;
-} panel;
+	hLocation *L;
+	hElementNode *elements;
+	hPanelNode *panels;
+} hPanel;
 
+typedef hPanel hWindow;
 
 
 ///////////////////////// Constructors /////////////////////////////////
 
-location *Location(int x, int y, int width, int height);
+hLocation *HLocation(int x, int y, int width, int height);
 
-panel *Panel(int type, location *L);
-panelNode *PanelNode(panel *P, panelNode *next);
+hPanel *Panel(int type, hLocation *L);
+hPanelNode *HPanelNode(hPanel *P, hPanelNode *next);
 
-element *Element(int type, location *L);
-elementNode *ElementNode(element *E, elementNode* next);
+hElement *HElement(int type, hLocation *L);
+hElementNode *HElementNode(hElement *E, hElementNode* next);
 
-panel *Window(char* name, location *L);
+hWindow *HWindow(char* name, hLocation *L);
 
 #endif

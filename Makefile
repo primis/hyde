@@ -2,9 +2,9 @@
 
 
 PROG	= hyde
-SOURCES	= main.c jekyll.c hyde.c
+SOURCES	= main.c jekyll.c hyde.c lanyon.c
 ########################################################################
-LDFLAGS	=
+LDFLAGS	= -lX11
 CC		=gcc
 CFLAGS	=-Wall
 ########################################################################

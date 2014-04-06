@@ -3,11 +3,12 @@
 
 #include <stdio.h>
 #include "Include/hyde.h"
-
+extern void renderWindows();
 int main()
 {
-	panel* Win;
-	Win = Window("Test", Location(100,100,400,400));
+	hWindow* Win;
+	Win = HWindow("Hello, World!", HLocation(200,300,400,300));
 	Win->visible = 1;
+	renderWindows();
 	return 0;
 }
