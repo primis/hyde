@@ -84,4 +84,7 @@ hElementNode *HElementNode(hElement *E, hElementNode* next);
 
 hWindow *HWindow(char* name, hLocation *L);
 
+//////////////////////// Functions /////////////////////////////////////
+void hInit();
+void hPoll();
 #endif
