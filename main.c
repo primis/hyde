@@ -2,7 +2,7 @@
 // Hyde - Dual Personality Windowing engine.
 
 
-
+#include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include "Include/hyde.h"
@@ -13,9 +13,14 @@ int main(int argv, char** argc)
 	if(argv == 2){
 		if(strcmp(argc[1], "hyde") == 0) {
 			HYDE = 1;
-		} else {
+		} else if (strcmp(argc[1], "jekyll") == 0) {
 			HYDE = 0;
+		} else {
+			printf("%s -- Arguments \nhyde - Launch x11\njekyll - Launch Terminally\n", argc[0]);
 		}
+	} else {
+		printf("%s -- Arguments \nhyde - Launch x11\njekyll - Launch Terminally\n", argc[0]);
+		exit(0);
 	}
 	hWindow* Win;
 	Win = HWindow("Hello, World!", HLocation(200,300,400,300));
