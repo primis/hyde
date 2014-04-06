@@ -1,11 +1,22 @@
 // 2014 Nick Sargente
 // Hyde - Dual Personality Windowing engine.
 
+
+
 #include <stdio.h>
+#include <string.h>
 #include "Include/hyde.h"
 extern void renderWindows();
-int main()
+extern int HYDE;
+int main(int argv, char** argc)
 {
+	if(argv == 2){
+		if(strcmp(argc[1], "hyde") == 0) {
+			HYDE = 1;
+		} else {
+			HYDE = 0;
+		}
+	}
 	hWindow* Win;
 	Win = HWindow("Hello, World!", HLocation(200,300,400,300));
 	Win->visible = 1;
@@ -27,7 +38,6 @@ int main()
 	TestText->value = 1; TestText->string = "X";
 	Win->elements = HElementNode(TestText, Win->elements);
 
-	hInit();
 
 	TestText = HElement(HLINE, HLocation(10, 150, 390,0));
 	Win->elements = HElementNode(TestText, Win->elements);
@@ -35,6 +45,8 @@ int main()
 	TestText = HElement(SECUREINPUT, HLocation(10, 120,40,3));
 	TestText->string = "This is a Input Box";
 	Win->elements = HElementNode(TestText, Win->elements);
+
+	hInit();
 	while(1)
 		hPoll();
 

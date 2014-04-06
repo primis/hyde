@@ -4,7 +4,7 @@
 PROG	= hyde
 SOURCES	= main.c jekyll.c hyde.c lanyon.c
 ########################################################################
-LDFLAGS	= -lX11
+LDFLAGS	= -lX11 -lncurses
 CC		=gcc
 CFLAGS	=-Wall
 ########################################################################

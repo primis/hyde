@@ -2,6 +2,7 @@
 #include <malloc.h>
 
 int CurrentGUID;
+int HYDE;
 hPanelNode *RootWindows;
 
 int genGUID()
@@ -99,14 +100,23 @@ hPanel *HWindow(char* name, hLocation *L)
 ////////////////////////////////////////////////////////////////////////
 extern void HydeInit();
 extern void HydeListener();
+extern void JekyllInit();
+extern void JeckyllListener();
+
 
 void hInit()
 {
-	HydeInit();
+	if(HYDE)
+		HydeInit();
+	else
+		JekyllInit();
 }
 
 
 void hPoll()
 {
-	HydeListener();
+	if(HYDE)
+		HydeListener();
+	else
+		JeckyllListener();
 }
